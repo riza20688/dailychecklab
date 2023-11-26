@@ -6,26 +6,28 @@
                     <div class="col-lg-5">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header">
-                                <h3 class="text-center font-weight-light my-4">Login</h3>
+                                <h3 class="text-center font-weight-light my-4">Login Account</h3>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <?= $this->session->flashdata('message'); ?>
+                                <form class="user" method="post" action="<?= base_url('auth'); ?>">
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" name="email" type="text" placeholder="NIM" />
-                                        <label for="inputEmail">Email address</label>
+                                        <input class="form-control" id="nim" name="nim" type="text" placeholder="NIM" value="<?= set_value('nim'); ?>" />
+                                        <small class="text-danger pl-3"><?= form_error('nim'); ?></small>
+                                        <label for="inputEmail">NIM</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                        <small class="text-danger pl-3"><?= form_error('password'); ?></small>
                                         <label for="inputPassword">Password</label>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0 ">
-                                        <a class="small" href="password.html">Forgot Password?</a>
+                                    <div class="d-grid mt-4 mb-0">
                                         <button class="btn btn-primary" href="index.html">Login</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer text-center py-3">
-                                <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                <div class="small"><a href="<?= base_url('auth/register') ?>">Buat Akun Disini !!</a></div>
                             </div>
                         </div>
                     </div>
