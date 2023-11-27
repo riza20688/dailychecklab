@@ -37,13 +37,13 @@
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     <input class="form-control" id="Password1" name="password1" type="password" placeholder="Password" />
                                                     <small class="text-danger pl-3"><?= form_error('password1'); ?></small>
-                                                    <label for="inputPassword1">Password</label>
+                                                    <label for="password1">Password</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     <input class="form-control" id="Password2" name="password2" type="password" placeholder="Confirm password" />
-                                                    <label for="inputPassword2">Konfirmasi Password</label>
+                                                    <label for="password2">Konfirmasi Password</label>
                                                 </div>
                                             </div>
                                         </div>

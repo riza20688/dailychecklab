@@ -34,8 +34,8 @@ class Auth extends CI_Controller
 
     private function _login()
     {
-        $nim = $this->input->post('nim', true);
-        $password = $this->input->post('password', true);
+        $nim = $this->input->post('nim');
+        $password = $this->input->post('password');
 
         $user = $this->db->get_where('user', ['nim' => $nim])->row_array();
 
@@ -112,7 +112,7 @@ class Auth extends CI_Controller
                 'kelas' => $this->input->post('kelas'),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 0,
+                'is_active' => 1,
                 'foto' => 'default.jpg'
             ];
 
@@ -122,5 +122,16 @@ class Auth extends CI_Controller
           </div>');
             redirect('auth');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('nim');
+        $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Akun berhasil logout!
+          </div>');
+        redirect('auth');
     }
 }
