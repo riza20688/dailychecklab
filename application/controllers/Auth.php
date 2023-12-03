@@ -5,14 +5,13 @@ class Auth extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct();
-        $this->load->library('form_validation');
+        parent::__construct();       
     }
     public function index()
     {
         $this->form_validation->set_rules(
-            'nim',
-            'Nim',
+            'id_user',
+            'Id_user',
             'trim|required',
             ['required' => 'NIM harus diisi']
         );
@@ -34,20 +33,24 @@ class Auth extends CI_Controller
 
     private function _login()
     {
-        $nim = $this->input->post('nim');
+        $nim = $this->input->post('id_user');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['nim' => $nim])->row_array();
+        $user = $this->db->get_where('user', ['id_user' => $nim])->row_array();
 
         if ($user) {
             if ($user['is_active'] == 1) {
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'nim' => $user['nim'],
+                        'id_user' => $user['id_user'],
                         'role_id' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
-                    redirect('user');
+                    if ($user['role_id'] == 1) {
+                        redirect('admin');
+                    } else {
+                        redirect('user');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                     Password Salah!</div>');
@@ -71,7 +74,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules(
             'nim',
             'Nim',
-            'required|trim|is_unique[user.nim]',
+            'required|trim|is_unique[user.id_user]',
             [
                 'required' => 'NIM Harus diisi',
                 'is_unique' => 'NIM sudah ada !'
@@ -107,12 +110,12 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             $data = [
-                'nim' => $this->input->post('nim', true),
+                'id_user' => $this->input->post('nim', true),
                 'nama' => $this->input->post('nama', true),
                 'kelas' => $this->input->post('kelas'),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
-                'is_active' => 1,
+                'is_active' => 0,
                 'foto' => 'default.jpg'
             ];
 
@@ -126,7 +129,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('nim');
+        $this->session->unset_userdata('id_user');
         $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">

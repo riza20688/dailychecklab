@@ -12,7 +12,7 @@
                                 <?= $this->session->flashdata('message'); ?>
                                 <form class="user" method="post" action="<?= base_url('auth'); ?>">
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="nim" name="nim" type="text" placeholder="NIM" value="<?= set_value('nim'); ?>" />
+                                        <input class="form-control" id="id_user" name="id_user" type="text" placeholder="NIM" value="<?= set_value('nim'); ?>" />
                                         <small class="text-danger pl-3"><?= form_error('nim'); ?></small>
                                         <label for="inputEmail">NIM</label>
                                     </div>

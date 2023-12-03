@@ -3,23 +3,27 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">User</div>
-                    <a class="nav-link" href="<?= base_url('user'); ?>">
+                    <div class="sb-sidenav-menu-heading">Admin</div>
+                    <a class="nav-link" href="<?= base_url('admin'); ?>">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-house-user"></i></div>
                         Dashboard
                     </a>
                     <hr class="sidebar-divider">
                     <div class="sb-sidenav-menu-heading">Interface</div>
-                    <a class="nav-link" href="<?= base_url('barang/cekbarang'); ?>">
+                    <a class="nav-link" href="<?= base_url('barang'); ?>">
                         <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
-                        Input Laporan Barang
+                        Input Data Barang
+                    </a>
+                    <a class="nav-link" href="<?= base_url('admin/ceksiswa'); ?>">
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
+                        Data Siswa
+                    </a>
+                    <a class="nav-link" href="<?= base_url('barang/laporanbarang'); ?>">
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
+                        Lihat Laporan
                     </a>
                     <hr class="sidebar-divider">
                     <div class="sb-sidenav-menu-heading">Profile</div>
-                    <a class="nav-link" href="<?= base_url('user/ubahprofil'); ?>">
-                        <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
-                        Edit Profile
-                    </a>
                     <a class="nav-link" href="<?=
                                                 base_url('auth/logout'); ?>">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
